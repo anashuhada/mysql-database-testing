@@ -1,0 +1,255 @@
+SQL Language
+
+1) Data Definition Language (DDL)
+- CREATE, ALTER, DROP, TRUNCATE, RENAME
+
+2) Data Manipulation Language (DML)
+- INSERT, UPDATE, DELETE
+
+3) Data Retrieval Language (DRL) / Data Query Language (DQL)
+- SELECT
+
+4) Transaction Control Language (TCL)
+- COMMIT, ROLLBACK, SAVE POINT
+
+5) Data Control Language (DCL)
+- GRANT, REVOKE
+_______________________________________________________________________________
+
+Create Database (Storage area) / Schema (Folder Structure)
+
+CREATE DATABASE database_name;
+DROP DATABASE database_name;
+
+CREATE SCHEMA database_name;
+DROP SCHEMA database_name;
+
+CREATE DATABASE IF NOT EXISTS database_name;
+_______________________________________________________________________________
+
+SQL Data Types
+1) Numeric: store numbers
+- INT, FLOAT, DOUBLE, DECIMAL
+
+2) Text: store characters and strings
+- CHAR, VARCHAR
+
+3) Date/Time: store date and time
+- DATE, DATETIME, TIMESTAMP, TIME
+_______________________________________________________________________________
+
+Data Definition Languange (DDL)
+1) CREATE
+- Create database objects; database, table, view
+
+2) ALTER
+- Add a new column
+- Drop the existing column
+- Modify the existing column; increase/decrease size of the column & change the data type of the column
+- Rename a column
+
+3) DROP
+- Remove completely the data, table
+
+4) TRUNCATE
+- Remove only the data, the table structure still exists
+- Cannot rollback all the data
+
+5) DELETE (DML)
+- Remove only the data, the table structure still exists
+- Data will be removed temporary, but can be rollbacked
+_______________________________________________________________________________
+
+MySQL Functions
+1) String function: operate on string data types
+2) Numeric function: operate on numeric data types
+3) Date function: operate on date date types
+4) Aggregrate function: operate on all of the data types and produce summarised result sets
+_______________________________________________________________________________
+
+String Functions
+1) UPPER(): converts into upper case letters
+2) LOWER(): converts into lower case letters
+3) LENGTH(): returns the length of the string
+4) TRIM(): removes the specified characters from both sides
+5) INSTR(): returns the position of the character within a string
+6) SUBSTR()/SUBSTRING(): returns the substring of the string
+7) CONCAT(): joins 2 strings
+_______________________________________________________________________________
+
+Numeric Functions
+1) ABS(): absolute
+2) SQRT(): square root
+3) MOD()
+4) POWER()
+5) TRUNCATE(): truncates a number to the specified number of decimal places
+6) GREATEST(): returns greatest values
+7) LEAST(): returns least values
+_______________________________________________________________________________
+
+Date Functions
+1) CURDATE()/CURRENT_DATE(): returns the current date
+2) CURTIME()/CURRENT_TIME(): returns the current time
+3) NOW(): returns the current date and time
+4) SYSDATE(): returns the current date and time
+5) MONTH(): returns the month part for a given date (1-12)
+6) YEAR(): returns the year part for a given date (1000-9999)
+7) DAY(): returns the day of the month for a given date (1-31)
+_______________________________________________________________________________
+
+Aggregrate Functions: performs calculations on multiple rows of a single column of a table and returns a single value
+1) AVG(): returns average value
+2) SUM(): returns sum value
+3) MIN(): returns min value
+4) MAX(): returns max value
+5) COUNT(): returns total number of rows
+_______________________________________________________________________________
+
+Group By Clause
+- Group records into summary rows
+- Returns one record for each group
+- Involves aggregrates; AVG, SUM, MIN, MAX, COUNT
+- Can group by one/more columns
+_______________________________________________________________________________
+
+Having Clause
+- Filter the output from GROUP BY clause
+_______________________________________________________________________________
+
+Order By Clause
+- Arrange the rows in a table; ascending/descending order
+_______________________________________________________________________________
+
+Order of Execution
+
+SELECT column_name
+FROM table_name
+WHERE condition
+GROUP BY column_name
+HAVING condition
+ORDER BY column_name
+_______________________________________________________________________________
+
+UNION & UNION ALL Operator
+1) UNION
+- Combine the result-set of 2/more SELECT statements
+- Not allows duplicates
+- Each SELECT statements with UNION must have the same number of columns
+- The columns must also have similar data types
+- The columns in each SELECT statement must also be in the same order
+2) UNION ALL
+- Allows duplicates
+_______________________________________________________________________________
+
+SQL Joins
+- Helps retrieving data from 2/more tables
+- Tables are mutually related using PK & FK
+- Types: 
+1) Equi join/inner join/simple join
+2) Right join
+3) Left join
+4) Full join
+5) Self join: returns only matched records from both tables
+_______________________________________________________________________________
+
+Sub Queries
+- A query within a query
+- 2 parts: inner query & outer query
+- The output of inner query is become input of outer query
+- 2 types of sub queries:
+1) Single row sub query: <=, >=, !=
+2) Multi row sub query: IN, ANY, ALL
+_______________________________________________________________________________
+
+Integrity Constraints
+- Specify rules for data in a table
+- Constraints can be specified when the table is created with the CREATE TABLE statements or after the table is created with the ALTER TABLE statement
+- SQL constraints:
+1) NOT NULL: ensures that a column cannot have a NUL value
+2) UNIQUE: ensures that all values in a column are different
+3) PRIMARY KEY: combination of a NOT NULL an UNIQUE, uniquely identifies each row in a table
+4) FOREIGN KEY: uniquely identifies a row/record in another table
+5) CHECK: ensures that all values in a column satisfies a specific condition
+6) DEFAULT: sets a default value for a column when no value is specified
+_______________________________________________________________________________
+
+Stored Procedure Testing
+
+What's stored procedure?
+- Block of SQL statements
+- Can save stored procedure and be reused multiple times
+- Can pass params to a stored procedure
+
+Advantages:
+1) Reduce network traffic: between apps and MySQL server, because instead of sending multiple lengthy SQL statements, apps have to send only the name and params of stored procedures.
+2) Centralize business logic in DB: implement business logic that is reusable by multiple apps. It helps reducing the efforts of duplicating the same logic in many apps and make DB more consistent.
+3) Make DB more secure: DB admin can grant appropriate privileges to apps that only access specific stored procedures without giving ant priveleges on the underlying tables.
+
+How to create stored procedure?
+How to call stored procedure?
+How to write test cases for stored procedure?
+How to test stored procedure?
+
+Common Test Scenarios for Stored Procedure
+1) Check stored procedure exist in database 
+2) Check stored procedure with valid input data
+3) Check stored procedure handle exceptions when you pass invalid input data 
+4) Check stored procedure display results as expected
+5) Check stored procedure inserting data in proper table
+6) Check stored procedure updating data in proper table 
+7) Check stored procedure deleting data from proper table
+8) Check calling stored procedure from another stored procedure
+_______________________________________________________________________________
+
+What is Stored Function in SQL?
+Stored Procedure VS Stored Function
+- A stored function is a special kind stored program that returns a single value
+- Stored function must return a value
+- Stored procedure is optional; can return 0/n values
+- Stored function can have only input parameters
+- Stored procedure can have input/output parameters
+- Stored function can be called from stored procedure
+- Stored procedure cannot be called from a stored function
+_______________________________________________________________________________
+
+Common Test Scenarios for Stored Function
+1) Check stored function exists in DB
+2) Check stored function with valid input data
+3) Check stored function handle exceptions when pass invalid input data
+4) Check stored function returns results as expected 
+5) Check stored function not used INSERT/UPDATE/DELETE statements
+6) Check stored function used only SELECT statements
+7) Check calling stored function from Stored Procedure
+_______________________________________________________________________________
+
+What is Trigger?
+- A set of SQL statements that resides in a system catalog
+- A special type of stored procedure that invoked automatically in response to an event
+- Each trigger is associated with a table, which is activated on any DML statement: INSERT, UPDATE, DELETE
+- Cannot be called directly like a stored procedure
+- Main difference between the trigger & procedure is; trigger is called automatically when a data modification event is made against a table
+- A stored procedure must be called explicitly
+_______________________________________________________________________________
+
+Types of Triggers in MySQL (actions/events in the form of triggers)
+- Before Insert: activated before the insertion of data into the table
+- After Insert: activated after the insertion of data into the table
+- Before Update: activated before the update of data into the table
+- After Update: activated after the update of data into the table
+- Before Delete: activated before the data is removed from the table
+- After Delete: activated after the data is removed from the table
+_______________________________________________________________________________
+
+Data Mapping Testing - CRUD Operations
+- Perform operations from front-end app and see data is exactly reflecting on corresponding database or or
+- Focused on:
+1) Data existence: check data is properperly existed in db or not
+2) Data correctness: check data is inserted correctly or not 
+3) Data completeness: check data is complete or not
+_______________________________________________________________________________
+
+ACID Properties
+- Atomic: all changes to the data must be performed successfully or not at all
+- Consistent: data must be in a consistent state before and after the transaction
+- Isolated: no other process can change the data while the transacation is running
+- Durable: the changes made by transaction must persist
