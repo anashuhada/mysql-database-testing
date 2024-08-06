@@ -17,7 +17,7 @@ public class MySQLDMLCommands {
 		// TODO Auto-generated method stub
 		
 		//Create a connection
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mysql_tutorial", "root", "Baseus_E16");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mysql_tutorial", "root", "password");
 	
 		//Create a statement/query
 		Statement stmt = conn.createStatement();
