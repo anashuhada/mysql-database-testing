@@ -19,7 +19,7 @@ public class MySQLSelectCommands {
 		// TODO Auto-generated method stub
 		
 		//Create a connection
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hr", "root", "Baseus_E16");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hr", "root", "password");
 	
 		//Create a statement/query
 		Statement stmt = conn.createStatement();
