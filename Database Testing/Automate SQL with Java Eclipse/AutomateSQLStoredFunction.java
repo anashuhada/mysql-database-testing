@@ -19,7 +19,7 @@ public class AutomateSQLStoredFunction {
 	
 	@BeforeClass
 	void setup() throws SQLException {
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/classicmodels", "root", "upm_1620");
+		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/classicmodels", "root", "password");
 	}
 	
 	@AfterClass
